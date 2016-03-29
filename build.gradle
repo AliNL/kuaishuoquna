@@ -1,0 +1,63 @@
+apply plugin: 'idea'
+apply plugin: 'jetty'
+apply plugin: 'java'
+
+
+[jettyRun, jettyRunWar, jettyStop]*.stopPort = 8081
+[jettyRun, jettyRunWar, jettyStop]*.stopKey = 'stopKey'
+
+jettyRun.contextPath = '/'
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '2.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    compile 'org.springframework:spring-webmvc:3.2.6.RELEASE'
+    compile 'org.springframework:spring-jdbc:3.1.0.RELEASE'
+    compile 'org.mybatis:mybatis:3.2.1'
+    compile 'log4j:log4j:1.2.17'
+    compile 'postgresql:postgresql:9.1-901.jdbc4'
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.mockito:mockito-all:1.9.5'
+    testCompile 'org.seleniumhq.selenium:selenium-java:2.48.2'
+}
+
+
+task createDB(type: Exec) {
+    workingDir 'scripts'
+    commandLine './createDb.sh'
+}
+
+test {
+    exclude 'functional/**'
+}
+
+task functionalTest(type: Test) {
+
+    include 'functional/**'
+    doFirst {
+        jettyRun.daemon = true
+        jettyRun.execute()
+    }
+
+    doLast {
+        jettyStop.execute()
+    }
+}
+
+// This zips up all code (to distribute). And the zip ends up under ./build/distributions
+task zip(type: Zip) {
+    from projectDir
+    include 'src/**/*', 'test/**/*', 'scripts/**/*', 'gradle/**/*', 'build.gradle', 'gradlew', 'gradlew.bat', 'README.md'
+}
+
+functionalTest.dependsOn createDB
+build.dependsOn functionalTest
+
+

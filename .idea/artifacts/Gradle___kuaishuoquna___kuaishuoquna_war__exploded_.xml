@@ -1,0 +1,36 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="Gradle : kuaishuoquna : kuaishuoquna.war (exploded)">
+    <output-path>$PROJECT_DIR$/build/classes/artifacts/kuaishuoquna/exploded/kuaishuoquna.war</output-path>
+    <properties id="gradle-properties">
+      <options external-project-path="$PROJECT_DIR$" />
+    </properties>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="kuaishuoquna/web/Web Gradle : kuaishuoquna.war" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="kuaishuoquna" />
+          <element id="dir-copy" path="$PROJECT_DIR$/build/resources/main" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-webmvc/3.2.6.RELEASE/d6bb78a20435eb6cfafa39874d58504bfe8f6365/spring-webmvc-3.2.6.RELEASE.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-jdbc/3.1.0.RELEASE/7aa355d36411f9816b0338f0dfaac63399abd60e/spring-jdbc-3.1.0.RELEASE.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.mybatis/mybatis/3.2.1/bcaf8001027188c1e18f687e266970315f09c98e/mybatis-3.2.1.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/log4j/log4j/1.2.17/5af35056b4d257e4b64b9e8069c0746e8b08629f/log4j-1.2.17.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/postgresql/postgresql/9.1-901.jdbc4/153f2f92a786f12fc111d0111f709012df87c808/postgresql-9.1-901.jdbc4.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-beans/3.2.6.RELEASE/6150c82cf0230f9a7acc29ff6a6d3718be892b35/spring-beans-3.2.6.RELEASE.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-context/3.2.6.RELEASE/874645430cdfc2dc9f1822908968d2a834d54b87/spring-context-3.2.6.RELEASE.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/3.2.6.RELEASE/88e827d2094fee5be091f31a8eab9f75300bebcd/spring-core-3.2.6.RELEASE.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-expression/3.2.6.RELEASE/418ba26d73141e08c19dab2bb14e0e545b5345d9/spring-expression-3.2.6.RELEASE.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-web/3.2.6.RELEASE/d043b1fb4a33124a76c3ee98857b57e45bf7e671/spring-web-3.2.6.RELEASE.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-tx/3.1.0.RELEASE/825dd46d268cc89eb282885ceb1b1664b31a43d3/spring-tx-3.1.0.RELEASE.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-aop/3.2.6.RELEASE/b49f2d04ed8c7bd37552e5e68b662b7c93ba7001/spring-aop-3.2.6.RELEASE.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/aopalliance/aopalliance/1.0/235ba8b489512805ac13a8f9ea77a1ca5ebe3e8/aopalliance-1.0.jar" />
+          <element id="file-copy" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-logging/commons-logging/1.1.1/5043bfebc3db072ed80fbd362e7caf00e885d8ae/commons-logging-1.1.1.jar" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/build/classes/artifacts/kuaishuoquna/exploded/kuaishuoquna.war/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>

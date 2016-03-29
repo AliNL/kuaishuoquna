@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="kuaishuoquna.web.HelloControllerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2016-03-26T15:45:27" hostname="CNyzhou.local" time="0.101">
+  <properties/>
+  <testcase name="shouldGetMessageFromHelloService" classname="kuaishuoquna.web.HelloControllerTest" time="0.101"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
