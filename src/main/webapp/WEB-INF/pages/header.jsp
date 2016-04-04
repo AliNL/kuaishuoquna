@@ -1,4 +1,3 @@
-
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
@@ -6,11 +5,10 @@
     <link rel="stylesheet" href="<c:url value='/css/main.css' />" type="text/css"/>
 </head>
 <body>
-    <div class="nav_bar">
-        <h1>${pageTitle}</h1>
-        <ul class="nav">
-            <li><a href="index.jsp">主页</a></li>
-            <li><a href="/" >创建</a></li>
-        </ul>
+<nav>
+    <img src="<c:url value='/images/logo.png' />" alt="LOGO">
+    <div id="isLoggedIn">
+        <h2>Welcome ${User.name}!</h2>
+        <a id="logOut" href="<c:url value='/' />"><h2>Log out</h2></a>
     </div>
-
+</nav>

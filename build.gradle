@@ -30,8 +30,13 @@ dependencies {
 
 
 task createDB(type: Exec) {
-    workingDir 'scripts'
+    workingDir 'db'
     commandLine './createDb.sh'
+}
+
+task initDB(type: Exec) {
+    workingDir 'db/migrations'
+    commandLine './mybatis/bin/migrate', 'up'
 }
 
 test {
