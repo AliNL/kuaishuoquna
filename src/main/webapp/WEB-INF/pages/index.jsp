@@ -8,5 +8,7 @@ ${message}
 	<h1>${message}</h1>
 一些中文
 
+<button id="create">创建</button>
+
 
 <%@ include file="footer.jsp" %>

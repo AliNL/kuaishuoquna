@@ -22,6 +22,5 @@ public class HomeController {
 	public String displayMessage(ModelMap model) {
         model.addAttribute("message", helloService.getGreeting());
 		return "index";
-
 	}
 }

@@ -3,14 +3,7 @@
  */
 
 $(document).ready(function(){
-    var isLoggedIn = localStorage.getItem("UserName");
-
-    if(!isNaN(isLoggedIn)){
-        $("#isLoggedIn").show();
-    }
-
-    $("#logOut").click(function(){
-        localStorage.removeItem("UserName");
-        $("#isLoggedIn").hide();
-    });
+    $("#create").click(function () {
+        window.location.href = "<c:url value='/create' />";
+    })
 });

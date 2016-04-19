@@ -3,6 +3,9 @@
 <head>
     <title>${pageTitle}</title>
     <link rel="stylesheet" href="<c:url value='/css/main.css' />" type="text/css"/>
+    <script type="text/javascript" src="<c:url value='/js/lib/jquery-1.10.2.js' />"></script>
+    <script type="text/javascript" src="<c:url value='/js/lib/jquery.cookie.js' />"></script>
+    <script type="text/javascript" src="<c:url value='/js/main.js' />"></script>
 </head>
 <body>
 <nav>
