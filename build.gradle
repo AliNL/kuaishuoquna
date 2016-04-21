@@ -49,30 +49,14 @@ task initDB(type: Exec) {
     commandLine './mybatis/bin/migrate', 'up'
 }
 
-test {
-    exclude 'functional/**'
-}
-
-task functionalTest(type: Test) {
-
-    include 'functional/**'
-    doFirst {
-        jettyRun.daemon = true
-        jettyRun.execute()
-    }
-
-    doLast {
-        jettyStop.execute()
-    }
-}
 
 // This zips up all code (to distribute). And the zip ends up under ./build/distributions
 task zip(type: Zip) {
     from projectDir
     include 'src/**/*', 'test/**/*', 'scripts/**/*', 'gradle/**/*', 'build.gradle', 'gradlew', 'gradlew.bat', 'README.md'
 }
-
-functionalTest.dependsOn createDB
-build.dependsOn functionalTest
+test.dependsOn initDB
+initDB.dependsOn createDB
+build.dependsOn test
 
 

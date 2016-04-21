@@ -10,8 +10,6 @@
 <body>
 <nav>
     <img src="<c:url value='/images/logo.png' />" alt="LOGO">
-    <div id="isLoggedIn">
-        <h2>Welcome !</h2>
-        <a id="logOut" href="<c:url value='/' />"><h2>Log out</h2></a>
-    </div>
+    <a href="<c:url value='/event/create' />">创建</a>
+    <a href="<c:url value='/' />">主页</a>
 </nav>

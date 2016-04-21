@@ -1,15 +1,9 @@
-#!/bin/sh -e
+#!/bin/bash
 
-set -e
-#Drop DB named kuaishuoquna if exits
-dropdb --if-exists kuaishuoquna
+function createdb() {
+  DATABASE=$1
+  PGPASSWORD=postgres psql -U postgres -h localhost -c "drop database ${DATABASE}"
+  PGPASSWORD=postgres psql -U postgres -h localhost -c "create database ${DATABASE} OWNER = adminying"
+}
 
-#Drop user adminYing if exits
-dropuser --if-exists adminYing
-
-#Creates user adminYing
-createuser -s adminYing -W
-
-#Creates DB named kuaishuoquna
-createdb kuaishuoquna
-
+createdb "kuaishuoquna"

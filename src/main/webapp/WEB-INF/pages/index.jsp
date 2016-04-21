@@ -4,11 +4,14 @@
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 
-${message}
-	<h1>${message}</h1>
-一些中文
-
-<button id="create">创建</button>
-
+<div id="home-form">
+	<div class="home-bar red">
+		<a href="<c:url value='/event/create' />">创建</a>
+	</div>
+	<div class="home-bar blue">
+		<input id="event_name" type="text">
+		<button id="join">加入</button>
+	</div>
+</div>
 
 <%@ include file="footer.jsp" %>

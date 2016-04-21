@@ -1,29 +1,36 @@
 a {
+    font-size: 24px;
     color: #674ea7;
+    text-decoration:none;
 }
 
 nav {
     border-bottom: solid 2px #c27ba0;
 }
 
-nav img{
+nav img {
     height: 50px;
     width: 100px;
 }
 
-nav div {
-    display: inline-block;
+nav a {
     float: right;
+    margin: 20px;
 }
 
-h2 {
-    color: #2b78e4;
-    display: inline-block;
-    margin-right: 25px;
+#home-form {
+    width: 300px;
+    height: 400px;
+    margin: 50px auto;
+    border: solid 2px #674ea7;
+}
+
+.home-bar {
+    height: 200px;
+    text-align: center;
 }
 
 footer {
-    margin-top: 80px;
     border-top: solid 2px #2b78e4;
     padding: 1em;
 }
