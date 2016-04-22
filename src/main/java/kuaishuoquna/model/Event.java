@@ -6,6 +6,14 @@ package kuaishuoquna.model;
 public class Event {
     private int event_id;
 
+    private String name;
+
+    private String description;
+    private String owner;
+    private String password;
+    private String url;
+    private boolean active;
+
     public int getEvent_id() {
         return event_id;
     }
@@ -13,13 +21,6 @@ public class Event {
     public void setEvent_id(int event_id) {
         this.event_id = event_id;
     }
-
-    private String name;
-    private String description;
-    private String owner;
-    private String password;
-    private String url;
-    private boolean active;
 
     public boolean isActive() {
         return active;

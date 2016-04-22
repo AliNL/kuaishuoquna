@@ -4,8 +4,8 @@
 
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%--<c:if test="${eventDetail.active}">--%>
-	<p>${eventDetial.name}</p>
-	<p>${eventDetial.owner}</p>
-	<p>${eventDetial.description}</p>
+	<p>${eventDetail.name}</p>
+	<p>${eventDetail.owner}</p>
+	<p>${eventDetail.description}</p>
 <%--</c:if>--%>
 <%@ include file="footer.jsp" %>

@@ -9,12 +9,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class EventService {
 
-    final SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
-    final EventMapper eventMapper = sqlSession.getMapper(EventMapper.class);
+    private SqlSession sqlSession = MyBatisUtil.getSqlSessionFactory().openSession();
+    private EventMapper eventMapper = sqlSession.getMapper(EventMapper.class);
 
 
     public void createEvent(Event event) {
         eventMapper.insert(event);
+        sqlSession.commit();
     }
 
     public Event findEventByUrl(String url) {
