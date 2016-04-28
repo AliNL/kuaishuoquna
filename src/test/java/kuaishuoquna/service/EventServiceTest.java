@@ -17,17 +17,17 @@ public class EventServiceTest {
     public void setUp() throws Exception {
         eventService = new EventService();
         event = new Event()
-                .setName("Name")
+                .setName("some-name")
                 .setPassword("password")
-                .setOwner("Owner")
+                .setOwner("some-Owner")
                 .setUrl("some-url")
-                .setDescription("description")
+                .setDescription("some-Description")
                 .setActive(true);
     }
 
     @Test
     public void shouldGetWhatYouCreate() throws Exception {
         eventService.createEvent(event);
-        assertEquals("Name", eventService.findEventByUrl("some-url").getName());
+        assertEquals("some-name", eventService.findEventByUrl("some-url").getName());
     }
 }

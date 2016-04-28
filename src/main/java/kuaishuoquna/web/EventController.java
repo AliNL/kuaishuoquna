@@ -4,10 +4,11 @@ import kuaishuoquna.model.Event;
 import kuaishuoquna.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -26,32 +27,33 @@ public class EventController {
     }
 
     @RequestMapping(value = {"/submit"}, method = RequestMethod.POST)
-    public String Create(HttpServletRequest request) throws IOException {
+    public ModelAndView Create(HttpServletRequest request, Model model) throws IOException {
         Event event = createEvent(request);
-        return checkValidationErrors(event);
+        return checkValidationErrors(event, model);
     }
 
     @RequestMapping(value = "/{url:.*}", method = RequestMethod.GET)
-    public String get(@PathVariable String url) {
+    public ModelAndView get(@PathVariable String url, Model model) {
         Event event = eventService.findEventByUrl(url);
 
         if (event == null) {
-            return "index";
+            return new ModelAndView("index");
         }
-        new ModelMap().addAttribute("eventDetail", event);
-        return "event";
+        model.addAttribute("eventDetail", event);
+        return new ModelAndView("event");
     }
 
-    private String checkValidationErrors(Event event) {
+    private ModelAndView checkValidationErrors(Event event, Model model) {
 
         try {
             if (existUrl(event.getUrl())) {
-                return "createFailed";
+                return new ModelAndView("createFailed");
             }
             eventService.createEvent(event);
-            return get(event.getUrl());
+            model.addAttribute("eventDetail", event);
+            return new ModelAndView("redirect:/event/" + event.getUrl(), null);
         } catch (Exception e) {
-            return "createFailed";
+            return new ModelAndView("createFailed");
         }
     }
 

@@ -19,6 +19,7 @@ public class EventService {
     }
 
     public Event findEventByUrl(String url) {
+        sqlSession.clearCache();
         return eventMapper.getEventByUrl(url);
     }
 }

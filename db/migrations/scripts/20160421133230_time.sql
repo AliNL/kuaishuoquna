@@ -4,7 +4,8 @@ CREATE TABLE time
 (
   event_id BIGINT NOT NULL,
   time_id BIGINT NOT NULL,
-  note CHARACTER VARYING(255) NOT NULL
+  note CHARACTER VARYING(255) NOT NULL,
+  count_number INT DEFAULT 0
 );
 
 

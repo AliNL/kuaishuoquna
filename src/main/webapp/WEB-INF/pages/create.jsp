@@ -8,28 +8,27 @@
 <form id="register_form" action="/event/submit" method="post">
 
     <div id="name_field">
-        <label for="fld_name">Name</label>
-        <input type="text" id="fld_name" placeholder="Event Name" name="name">
-    </div>
-
-    <div id="password_field">
-        <label for="fld_password">Password</label>
-        <input type="password" id="fld_password" placeholder="Password" name="password">
+        <label for="fld_name">活动名称：</label>
+        <input type="text" id="fld_name" placeholder="请输入活动名称" name="name">
     </div>
 
     <div id="description_field">
-        <label for="fld_description">description</label>
-        <input type="text" id="fld_description" name="description">
+        <label for="fld_description">活动描述：</label>
+        <textarea id="fld_description" name="description"></textarea>
     </div>
 
     <div id="owner_field">
-        <label for="fld_owner">owner</label>
-        <input type="text" id="fld_owner" name="owner">
+        <label for="fld_owner">组织者：</label>
+        <input type="text" id="fld_owner" placeholder="请输入组织者名称" name="owner">
     </div>
 
+    <div id="password_field">
+        <label for="fld_password">密码：</label>
+        <input type="password" id="fld_password" placeholder="密码用于结束活动投票" name="password">
+    </div>
 
     <div>
-            <input type="submit" id="createEvent" value="Create Event">
+        <input type="submit" id="createEvent" value="创建活动">
     </div>
 
 </form>
