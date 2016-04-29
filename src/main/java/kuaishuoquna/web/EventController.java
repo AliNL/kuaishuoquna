@@ -1,7 +1,10 @@
 package kuaishuoquna.web;
 
+import kuaishuoquna.model.Address;
 import kuaishuoquna.model.Event;
+import kuaishuoquna.model.Time;
 import kuaishuoquna.service.EventService;
+import kuaishuoquna.service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/event")
@@ -20,6 +24,9 @@ public class EventController {
 
     @Autowired
     EventService eventService;
+
+    @Autowired
+    VoteService voteService;
 
     @RequestMapping(value = {"/create"}, method = RequestMethod.GET)
     public String viewForm() {
@@ -35,11 +42,15 @@ public class EventController {
     @RequestMapping(value = "/{url:.*}", method = RequestMethod.GET)
     public ModelAndView get(@PathVariable String url, Model model) {
         Event event = eventService.findEventByUrl(url);
-
         if (event == null) {
             return new ModelAndView("index");
         }
+
+        List<Time> times = voteService.findTimeByEventId(event.getEvent_id());
+        List<Address> addresses = voteService.findAddressByEventId(event.getEvent_id());
         model.addAttribute("eventDetail", event);
+        model.addAttribute("times",times);
+        model.addAttribute("addresses",addresses);
         return new ModelAndView("event");
     }
 

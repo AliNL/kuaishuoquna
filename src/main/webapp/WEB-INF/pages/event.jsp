@@ -15,28 +15,28 @@
         <div class="time-address-owner" id="time">
             <h3>时间</h3>
             <div id="exist-time">
-                <c:forEach var="time" items="${time}" varStatus="row">
+                <c:forEach var="time" items="${times}" varStatus="row">
                     <c:out value="${time.note}"/>
                     <input type="checkbox" name="${time.id}" form="new-people">
                 </c:forEach>
             </div>
-            <form action="add-time" id="time-form">
+            <form action="" id="time-form">
                 <input type="text" name="time" form="time-form">
-                <input type="submit" form="time-form" value="添加">
+                <button type="submit" value="add-time" name="add" form="time-form">添加</button>
             </form>
         </div>
 
         <div class="time-address-owner" id="address">
             <h3>地点</h3>
             <div id="exist-address">
-                <c:forEach var="address" items="${address}" varStatus="row">
+                <c:forEach var="address" items="${addresses}" varStatus="row">
                     <c:out value="${address.note}"/>
                     <input type="checkbox" name="${address.id}" form="new-people">
                 </c:forEach>
             </div>
-            <form action="add-address" id="address-form">
+            <form action="" id="address-form">
                 <input type="text" name="address" form="address-form">
-                <input type="submit" form="address-form" value="添加">
+                <button type="submit" value="add-address" name="add" form="address-form">添加</button>
             </form>
         </div>
 

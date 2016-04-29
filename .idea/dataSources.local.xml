@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="dataSourceStorageLocal">
-    <data-source name="PostgreSQL - kuaishuoquna@localhost" uuid="342b2351-f106-4dc1-be00-1601de3d7e9d">
-      <secret-storage>memory</secret-storage>
+    <data-source name="PostgreSQL - kuaishuoquna@localhost" uuid="09824522-1754-43c7-a633-61fcde7f3a0a">
+      <secret-storage>master_key</secret-storage>
       <user-name>adminying</user-name>
+      <schema-pattern>kuaishuoquna.pg_catalog kuaishuoquna.public</schema-pattern>
+      <default-schemas>kuaishuoquna.public</default-schemas>
     </data-source>
   </component>
 </project>
