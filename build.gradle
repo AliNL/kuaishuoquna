@@ -53,7 +53,7 @@ task initDB(type: Exec) {
 // This zips up all code (to distribute). And the zip ends up under ./build/distributions
 task zip(type: Zip) {
     from projectDir
-    include 'src/**/*', 'test/**/*', 'scripts/**/*', 'gradle/**/*', 'build.gradle', 'gradlew', 'gradlew.bat', 'README.md'
+    include 'src/**/*', 'test/**/*', 'scripts/**/*', 'gradle/**/*', 'build.gradle', 'gradlew', 'gradlew.bat'
 }
 test.dependsOn initDB
 initDB.dependsOn createDB
