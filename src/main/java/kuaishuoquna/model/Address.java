@@ -1,8 +1,5 @@
 package kuaishuoquna.model;
 
-/**
- * Created by yzhou on 16-4-29.
- */
 public class Address {
     private String event_url;
     private long address_id;

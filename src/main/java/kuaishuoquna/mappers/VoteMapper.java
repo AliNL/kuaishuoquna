@@ -10,7 +10,7 @@ public interface VoteMapper {
 
     @Select(
             "SELECT event_url, time_id, note, count_number FROM time " +
-                    "WHERE event_url = #{url}"
+                    "WHERE event_url = #{event_url}"
     )
     @Results(value = {
             @Result(property="event_url"),
@@ -18,11 +18,11 @@ public interface VoteMapper {
             @Result(property="note"),
             @Result(property="count_number")
     })
-    List<Time> getTimeByEventUrl(String url);
+    List<Time> getTimeByEventUrl(String event_url);
 
     @Select(
             "SELECT event_url, address_id, note, count_number FROM address " +
-                    "WHERE event_url = #{url}"
+                    "WHERE event_url = #{event_url}"
     )
     @Results(value = {
             @Result(property="event_url"),
@@ -30,7 +30,7 @@ public interface VoteMapper {
             @Result(property="note"),
             @Result(property="count_number")
     })
-    List<Address> getAddressByEventUrl(String url);
+    List<Address> getAddressByEventUrl(String event_url);
 
     @Insert(
             "INSERT INTO time (event_url, note) " +
