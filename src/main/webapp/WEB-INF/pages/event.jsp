@@ -17,6 +17,7 @@
             <div id="exist-time">
                 <c:forEach var="time" items="${times}" varStatus="row">
                     <c:out value="${time.note}"/>
+                    已有<c:out value="${time.count_number}"/>票
                     <input type="checkbox" name="${time.id}" form="new-people">
                 </c:forEach>
             </div>
@@ -31,6 +32,7 @@
             <div id="exist-address">
                 <c:forEach var="address" items="${addresses}" varStatus="row">
                     <c:out value="${address.note}"/>
+                    已有<c:out value="${address.count_number}"/>票
                     <input type="checkbox" name="${address.id}" form="new-people">
                 </c:forEach>
             </div>
