@@ -8,6 +8,7 @@ import kuaishuoquna.service.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -46,12 +47,26 @@ public class EventController {
             return new ModelAndView("index");
         }
 
-        List<Time> times = voteService.findTimeByEventId(event.getEvent_id());
-        List<Address> addresses = voteService.findAddressByEventId(event.getEvent_id());
+        List<Time> times = voteService.findTimeByEventUrl(url);
+        List<Address> addresses = voteService.findAddressByEventUrl(url);
         model.addAttribute("eventDetail", event);
         model.addAttribute("times",times);
         model.addAttribute("addresses",addresses);
         return new ModelAndView("event");
+    }
+
+    @RequestMapping(value = "/add-time", method = RequestMethod.POST)
+    public ModelAndView CreateTime(HttpServletRequest request, Model model) throws IOException {
+        Time time = createTime(request);
+        voteService.createTime(time);
+        return get(time.getEvent_url(), model);
+    }
+
+    @RequestMapping(value = "/add-address", method = RequestMethod.POST)
+    public ModelAndView CreateAddress(HttpServletRequest request, Model model) throws IOException {
+        Address address = createAddress(request);
+        voteService.createAddress(address);
+        return get(address.getEvent_url(), model);
     }
 
     private ModelAndView checkValidationErrors(Event event, Model model) {
@@ -86,6 +101,25 @@ public class EventController {
                 .setDescription(description)
                 .setUrl(Integer.toString(new Date().hashCode()).substring(0, 8))
                 .setActive(true);
+    }
+
+    private Address createAddress(HttpServletRequest request) {
+        String note = request.getParameter("address");
+        String url = request.getParameter("event");
+
+        return new Address()
+                .setEvent_url(url)
+                .setNote(note);
+    }
+
+
+    private Time createTime(HttpServletRequest request) {
+        String note = request.getParameter("time");
+        String url = request.getParameter("event");
+
+        return new Time()
+                .setEvent_url(url)
+                .setNote(note);
     }
 
 }

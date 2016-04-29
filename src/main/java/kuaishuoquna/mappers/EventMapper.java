@@ -5,9 +5,6 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
-/**
- * Created by yzhou on 4/21/16.
- */
 public interface EventMapper {
 
     @Insert(

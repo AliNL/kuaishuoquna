@@ -10,7 +10,7 @@
 </div>
 
 <c:if test="${eventDetail.active}">
-    <form action="add-people" id="new-people">
+    <form action="/event/add-people" id="new-people" method="post">
 
         <div class="time-address-owner" id="time">
             <h3>时间</h3>
@@ -21,9 +21,9 @@
                     <input type="checkbox" name="${time.id}" form="new-people">
                 </c:forEach>
             </div>
-            <form action="" id="time-form">
+            <form action="/event/add-time" id="time-form" method="post">
                 <input type="text" name="time" form="time-form">
-                <button type="submit" value="add-time" name="add" form="time-form">添加</button>
+                <button type="submit" name="event" value="${eventDetail}" form="time-form">添加</button>
             </form>
         </div>
 
@@ -36,9 +36,9 @@
                     <input type="checkbox" name="${address.id}" form="new-people">
                 </c:forEach>
             </div>
-            <form action="" id="address-form">
+            <form action="/event/add-address" id="address-form" method="post">
                 <input type="text" name="address" form="address-form">
-                <button type="submit" value="add-address" name="add" form="address-form">添加</button>
+                <button type="submit" name="event" value="${eventDetail}" form="address-form">添加</button>
             </form>
         </div>
 

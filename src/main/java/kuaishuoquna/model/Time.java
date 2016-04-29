@@ -4,22 +4,22 @@ package kuaishuoquna.model;
  * Created by yzhou on 16-4-29.
  */
 public class Time {
-    private long event_id;
+    private String event_url;
     private long time_id;
     private String note;
     private int count_number;
-    private String id="time"+time_id;
+    private String id = "time" + time_id;
 
     public String getId() {
         return id;
     }
 
-    public long getEvent_id() {
-        return event_id;
+    public String getEvent_url() {
+        return event_url;
     }
 
-    public Time setEvent_id(long event_id) {
-        this.event_id = event_id;
+    public Time setEvent_url(String event_url) {
+        this.event_url = event_url;
         return this;
     }
 

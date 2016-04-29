@@ -25,13 +25,13 @@ public class VoteService {
         sqlSession.commit();
     }
 
-    public List<Time> findTimeByEventId(long eventId) {
+    public List<Time> findTimeByEventUrl(String url) {
         sqlSession.clearCache();
-        return voteMapper.getTimeByEventId(eventId);
+        return voteMapper.getTimeByEventUrl(url);
     }
 
-    public List<Address> findAddressByEventId(long eventId) {
+    public List<Address> findAddressByEventUrl(String url) {
         sqlSession.clearCache();
-        return voteMapper.getAddressByEventId(eventId);
+        return voteMapper.getAddressByEventUrl(url);
     }
 }

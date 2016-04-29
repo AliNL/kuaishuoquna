@@ -1,51 +1,47 @@
 package kuaishuoquna.mappers;
 
 import kuaishuoquna.model.Address;
-import kuaishuoquna.model.Event;
 import kuaishuoquna.model.Time;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
-/**
- * Created by yzhou on 16-4-29.
- */
 public interface VoteMapper {
 
     @Select(
-            "SELECT event_id, time_id, note, count_number FROM time " +
-                    "WHERE event_id = #{eventId}"
+            "SELECT event_url, time_id, note, count_number FROM time " +
+                    "WHERE event_url = #{url}"
     )
     @Results(value = {
-            @Result(property="event_id"),
+            @Result(property="event_url"),
             @Result(property="time_id"),
             @Result(property="note"),
             @Result(property="count_number")
     })
-    List<Time> getTimeByEventId(long eventId);
+    List<Time> getTimeByEventUrl(String url);
 
     @Select(
-            "SELECT event_id, address_id, note, count_number FROM address " +
-                    "WHERE event_id = #{eventId}"
+            "SELECT event_url, address_id, note, count_number FROM address " +
+                    "WHERE event_url = #{url}"
     )
     @Results(value = {
-            @Result(property="event_id"),
+            @Result(property="event_url"),
             @Result(property="address_id"),
             @Result(property="note"),
             @Result(property="count_number")
     })
-    List<Address> getAddressByEventId(long eventId);
+    List<Address> getAddressByEventUrl(String url);
 
     @Insert(
-            "INSERT INTO time (event_id, note) " +
-                    "VALUES (#{event_id}, #{note})"
+            "INSERT INTO time (event_url, note) " +
+                    "VALUES (#{event_url}, #{note})"
     )
     @Options(keyProperty = "time_id", useGeneratedKeys = true)
     void insertTime(Time time);
 
     @Insert(
-            "INSERT INTO address (event_id, note) " +
-                    "VALUES (#{event_id}, #{note})"
+            "INSERT INTO address (event_url, note) " +
+                    "VALUES (#{event_url}, #{note})"
     )
     @Options(keyProperty = "address_id", useGeneratedKeys = true)
     void insertAddress(Address address);

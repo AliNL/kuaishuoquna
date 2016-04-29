@@ -1,9 +1,9 @@
 -- // reserve order
 -- Migration SQL that makes the change goes here.
-CREATE TABLE time
+CREATE TABLE address
 (
-  event_id BIGINT NOT NULL,
-  time_id SERIAL PRIMARY KEY,
+  event_url CHARACTER VARYING(255) NOT NULL,
+  address_id SERIAL PRIMARY KEY,
   note CHARACTER VARYING(255) NOT NULL,
   count_number INT DEFAULT 0
 );
@@ -12,4 +12,4 @@ CREATE TABLE time
 -- //@UNDO
 -- SQL to undo the change goes here.
 
-DROP TABLE time;
+DROP TABLE address;

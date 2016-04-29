@@ -4,30 +4,31 @@ package kuaishuoquna.model;
  * Created by yzhou on 16-4-29.
  */
 public class Address {
-    private long event_id;
+    private String event_url;
     private long address_id;
     private String note;
     private int count_number;
-    private String id="address"+address_id;
+    private String id = "address" + address_id;
 
     public String getId() {
         return id;
     }
 
-    public long getEvent_id() {
-        return event_id;
+    public String getEvent_url() {
+        return event_url;
     }
 
-    public Address setEvent_id(long event_id) {
-        this.event_id = event_id;
+    public Address setEvent_url(String event_url) {
+        this.event_url = event_url;
         return this;
     }
+
     public long getAddress_id() {
         return address_id;
     }
 
-    public Address setAddress_id(long time_id) {
-        this.address_id = time_id;
+    public Address setAddress_id(long address_id) {
+        this.address_id = address_id;
         return this;
     }
 

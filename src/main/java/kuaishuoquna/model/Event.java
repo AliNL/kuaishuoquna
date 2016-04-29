@@ -75,31 +75,4 @@ public class Event {
         this.url = url;
         return this;
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Event event = (Event) o;
-
-        if (active != event.active) return false;
-        if (name != null ? !name.equals(event.name) : event.name != null) return false;
-        if (description != null ? !description.equals(event.description) : event.description != null) return false;
-        if (owner != null ? !owner.equals(event.owner) : event.owner != null) return false;
-        if (password != null ? !password.equals(event.password) : event.password != null) return false;
-        return url != null ? url.equals(event.url) : event.url == null;
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (description != null ? description.hashCode() : 0);
-        result = 31 * result + (owner != null ? owner.hashCode() : 0);
-        result = 31 * result + (password != null ? password.hashCode() : 0);
-        result = 31 * result + (url != null ? url.hashCode() : 0);
-        result = 31 * result + (active ? 1 : 0);
-        return result;
-    }
 }
