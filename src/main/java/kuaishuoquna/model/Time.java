@@ -1,11 +1,8 @@
 package kuaishuoquna.model;
 
-/**
- * Created by yzhou on 16-4-29.
- */
 public class Time {
-    private String event_url;
     private long time_id;
+    private String event_url;
     private String note;
     private int count_number;
     private String id = "time" + time_id;

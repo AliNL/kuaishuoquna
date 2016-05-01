@@ -1,8 +1,8 @@
 package kuaishuoquna.model;
 
 public class Address {
-    private String event_url;
     private long address_id;
+    private String event_url;
     private String note;
     private int count_number;
     private String id = "address" + address_id;
