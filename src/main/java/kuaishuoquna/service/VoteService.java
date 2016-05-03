@@ -49,9 +49,12 @@ public class VoteService {
     }
 
     public void createVoteDetails(List<VoteDetail> voteDetails) {
-        for (VoteDetail voteDetail: voteDetails) {
+        for (VoteDetail voteDetail : voteDetails) {
             voteMapper.insertVoteDetail(voteDetail);
-            voteMapper.updateVoteDetail(voteDetail.getType(),voteDetail.getItem_id());
+            if (voteDetail.getType().equals("time"))
+                voteMapper.updateTimeNumber(voteDetail.getItem_id());
+            else
+                voteMapper.updateAddressNumber(voteDetail.getItem_id());
         }
         sqlSession.commit();
     }
