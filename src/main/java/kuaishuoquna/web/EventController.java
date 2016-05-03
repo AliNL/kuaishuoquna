@@ -76,8 +76,12 @@ public class EventController {
         return new ModelAndView("redirect:/event/" + people.getEvent_url(), null);
     }
 
-
-
+    @RequestMapping(value = "/end", method = RequestMethod.POST)
+    public ModelAndView EndEvent(HttpServletRequest request) throws IOException {
+        String event_url = request.getParameter("url");
+        voteService.EndEventByUrl(event_url);
+        return new ModelAndView("redirect:/event/" + event_url, null);
+    }
 
     private ModelAndView checkValidationErrors(Event event, Model model) {
 

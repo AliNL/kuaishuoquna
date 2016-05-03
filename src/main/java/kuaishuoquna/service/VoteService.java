@@ -58,4 +58,9 @@ public class VoteService {
         }
         sqlSession.commit();
     }
+
+    public void EndEventByUrl(String event_url) {
+        voteMapper.EndEventByUrl(event_url);
+        sqlSession.commit();
+    }
 }

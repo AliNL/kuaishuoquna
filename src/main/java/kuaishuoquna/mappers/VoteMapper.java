@@ -86,4 +86,11 @@ public interface VoteMapper {
                     "WHERE address_id = #{item_id}"
     )
     void updateAddressNumber(long item_id);
+
+    @Update(
+            "UPDATE event " +
+                    "SET active = false " +
+                    "WHERE event_url = #{event_url}"
+    )
+    void EndEventByUrl(String event_url);
 }
