@@ -1,4 +1,4 @@
--- // create item
+-- // create event
 -- Migration SQL that makes the change goes here.
 
 CREATE TABLE event (

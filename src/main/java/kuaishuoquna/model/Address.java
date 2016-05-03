@@ -5,10 +5,9 @@ public class Address {
     private String event_url;
     private String note;
     private int count_number;
-    private String id = "address" + address_id;
 
     public String getId() {
-        return id;
+        return "address" + address_id;
     }
 
     public String getEvent_url() {

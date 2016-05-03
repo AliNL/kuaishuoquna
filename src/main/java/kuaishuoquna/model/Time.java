@@ -5,10 +5,9 @@ public class Time {
     private String event_url;
     private String note;
     private int count_number;
-    private String id = "time" + time_id;
 
     public String getId() {
-        return id;
+        return "time" + time_id;
     }
 
     public String getEvent_url() {

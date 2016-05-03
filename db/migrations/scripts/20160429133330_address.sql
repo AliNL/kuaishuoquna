@@ -1,4 +1,4 @@
--- // reserve order
+-- // address
 -- Migration SQL that makes the change goes here.
 CREATE TABLE address
 (

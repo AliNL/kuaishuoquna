@@ -3,7 +3,9 @@ package kuaishuoquna.service;
 import kuaishuoquna.mappers.MyBatisUtil;
 import kuaishuoquna.mappers.VoteMapper;
 import kuaishuoquna.model.Address;
+import kuaishuoquna.model.People;
 import kuaishuoquna.model.Time;
+import kuaishuoquna.model.VoteDetail;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
 
@@ -33,5 +35,24 @@ public class VoteService {
     public List<Address> findAddressByEventUrl(String url) {
         sqlSession.clearCache();
         return voteMapper.getAddressByEventUrl(url);
+    }
+
+    public long createPeople(People people) {
+        long people_id = voteMapper.insertPeople(people);
+        sqlSession.commit();
+        return people_id;
+    }
+
+    public List<People> findPeopleByEventUrl(String url) {
+        sqlSession.clearCache();
+        return voteMapper.getPeopleByEventUrl(url);
+    }
+
+    public void createVoteDetails(List<VoteDetail> voteDetails) {
+        for (VoteDetail voteDetail: voteDetails) {
+            voteMapper.insertVoteDetail(voteDetail);
+            voteMapper.updateVoteDetail(voteDetail.getType(),voteDetail.getItem_id());
+        }
+        sqlSession.commit();
     }
 }
