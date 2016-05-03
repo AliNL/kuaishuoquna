@@ -39,7 +39,7 @@ public class EventController {
         return checkValidationErrors(event, model);
     }
 
-    @RequestMapping(value = "/{url:.*}", method = RequestMethod.GET)
+    @RequestMapping(value = "/{url:[0-9]*}", method = RequestMethod.GET)
     public ModelAndView get(@PathVariable String url, Model model) {
         Event event = eventService.findEventByUrl(url);
         if (event == null) {
