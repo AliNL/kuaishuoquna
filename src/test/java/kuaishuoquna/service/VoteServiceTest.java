@@ -1,9 +1,8 @@
 package kuaishuoquna.service;
 
 import kuaishuoquna.model.*;
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.experimental.ParallelComputer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,13 +11,14 @@ import static org.junit.Assert.*;
 
 
 public class VoteServiceTest {
-    private VoteService voteService;
-    private Time time;
-    private Address address;
-    private People people;
+    private static VoteService voteService;
 
-    @Before
-    public void setUp() throws Exception {
+    @BeforeClass
+    public static void setUp() throws Exception {
+        Time time;
+        Address address;
+        People people;
+
         voteService = new VoteService();
         time = new Time()
                 .setEvent_url("some-url")
@@ -30,23 +30,24 @@ public class VoteServiceTest {
         people = new People()
                 .setEvent_url("some-url")
                 .setName("People name");
+
+        voteService.createTime(time);
+        voteService.createAddress(address);
+        voteService.createPeople(people);
     }
 
     @Test
     public void shouldGetTimeAfterCreate() throws Exception {
-        voteService.createTime(time);
         assertEquals("2016-4-29 12:42", voteService.findTimeByEventUrl("some-url").get(0).getNote());
     }
 
     @Test
     public void shouldGetAddressAfterCreate() throws Exception {
-        voteService.createAddress(address);
         assertEquals("No.40A DongYue Road", voteService.findAddressByEventUrl("some-url").get(0).getNote());
     }
 
     @Test
     public void shouldGetPeopleAfterCreate() throws Exception {
-        voteService.createPeople(people);
         assertEquals("People name", voteService.findPeopleByEventUrl("some-url").get(0).getName());
     }
 

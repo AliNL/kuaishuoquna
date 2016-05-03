@@ -74,9 +74,16 @@ public interface VoteMapper {
     void insertVoteDetail(VoteDetail voteDetail);
 
     @Update(
-            "UPDATE #{type} " +
+            "UPDATE time " +
                     "SET count_number = count_number + 1 " +
-                    "WHERE #{type}_id = #{item_id}"
+                    "WHERE time_id = #{item_id}"
     )
-    void updateVoteDetail(String type, long item_id);
+    void updateTimeNumber(long item_id);
+
+    @Update(
+            "UPDATE address " +
+                    "SET count_number = count_number + 1 " +
+                    "WHERE address_id = #{item_id}"
+    )
+    void updateAddressNumber(long item_id);
 }
