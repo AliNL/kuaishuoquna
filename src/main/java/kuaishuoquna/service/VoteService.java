@@ -29,12 +29,20 @@ public class VoteService {
 
     public List<Time> findTimeByEventUrl(String url) {
         sqlSession.clearCache();
-        return voteMapper.getTimeByEventUrl(url);
+        List<Time> list = voteMapper.getTimeByEventUrl(url);
+        for (Time time : list) {
+            time.setPeopleList(findPeopleByTimeId(time.getTime_id()));
+        }
+        return list;
     }
 
     public List<Address> findAddressByEventUrl(String url) {
         sqlSession.clearCache();
-        return voteMapper.getAddressByEventUrl(url);
+        List<Address> list = voteMapper.getAddressByEventUrl(url);
+        for (Address address : list) {
+            address.setPeopleList(findPeopleByAddressId(address.getAddress_id()));
+        }
+        return list;
     }
 
     public long createPeople(People people) {
@@ -62,5 +70,33 @@ public class VoteService {
     public void EndEventByUrl(String event_url) {
         voteMapper.EndEventByUrl(event_url);
         sqlSession.commit();
+    }
+
+    public List<Time> findTimeInOrder(String url) {
+        sqlSession.clearCache();
+        List<Time> list = voteMapper.getTimeInOrder(url);
+        for (Time time : list) {
+            time.setPeopleList(findPeopleByTimeId(time.getTime_id()));
+        }
+        return list;
+    }
+
+    public List<Address> findAddressInOrder(String url) {
+        sqlSession.clearCache();
+        List<Address> list = voteMapper.getAddressInOrder(url);
+        for (Address address : list) {
+            address.setPeopleList(findPeopleByAddressId(address.getAddress_id()));
+        }
+        return list;
+    }
+
+    public List<People> findPeopleByTimeId(long time_id) {
+        sqlSession.clearCache();
+        return voteMapper.getPeopleByTimeId(time_id);
+    }
+
+    public List<People> findPeopleByAddressId(long address_id) {
+        sqlSession.clearCache();
+        return voteMapper.getPeopleByAddressId(address_id);
     }
 }

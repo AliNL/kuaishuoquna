@@ -1,10 +1,24 @@
 package kuaishuoquna.model;
 
+import java.util.List;
+
 public class Time {
     private long time_id;
     private String event_url;
     private String note;
     private int count_number;
+    private String peopleList = "";
+
+    public String getPeopleList() {
+        return peopleList;
+    }
+
+    public Time setPeopleList(List<People> peopleList) {
+        for (People people : peopleList) {
+            this.peopleList += people.getName() + ",";
+        }
+        return this;
+    }
 
     public String getId() {
         return "time" + time_id;

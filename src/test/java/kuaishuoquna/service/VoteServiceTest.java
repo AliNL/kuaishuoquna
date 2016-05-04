@@ -30,10 +30,14 @@ public class VoteServiceTest {
         people = new People()
                 .setEvent_url("some-url")
                 .setName("People name");
+        List<VoteDetail> voteDetails = new ArrayList<VoteDetail>();
+        voteDetails.add(new VoteDetail().setPeople_id(1).setType("time").setItem_id(1));
+        voteDetails.add(new VoteDetail().setPeople_id(1).setType("address").setItem_id(1));
 
         voteService.createTime(time);
         voteService.createAddress(address);
         voteService.createPeople(people);
+        voteService.createVoteDetails(voteDetails);
     }
 
     @Test
@@ -53,11 +57,12 @@ public class VoteServiceTest {
 
     @Test
     public void shouldGetVoteDetailAfterCreate() throws Exception {
-        List<VoteDetail> voteDetails = new ArrayList<VoteDetail>();
-        voteDetails.add(new VoteDetail().setPeople_id(1).setType("time").setItem_id(1));
-        voteDetails.add(new VoteDetail().setPeople_id(1).setType("address").setItem_id(1));
-        voteService.createVoteDetails(voteDetails);
         assertEquals(1, voteService.findTimeByEventUrl("some-url").get(0).getCount_number());
         assertEquals(1, voteService.findAddressByEventUrl("some-url").get(0).getCount_number());
+    }
+
+    @Test
+    public void shouldGetPeopleList() throws Exception {
+        assertEquals("People name",voteService.findPeopleByAddressId(1).get(0).getName());
     }
 }

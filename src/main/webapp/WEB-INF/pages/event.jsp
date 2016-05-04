@@ -11,12 +11,12 @@
 
 <c:if test="${eventDetail.active}">
 
-    <div class="time-address-owner" id="time">
+    <div class="time-address-owner time">
         <h3>时间</h3>
         <div id="exist-time">
             <c:forEach var="time" items="${times}" varStatus="row">
-                <li>
-                    <c:out value="${time.note}"/>
+                <li title="${time.peopleList}">
+                    <c:out value="${time.note}  "/>
                     已有<c:out value="${time.count_number}"/>票
                     <input type="checkbox" name="time-id" value="${time.time_id}" form="new-people">
                 </li>
@@ -28,12 +28,12 @@
         </form>
     </div>
 
-    <div class="time-address-owner" id="address">
+    <div class="time-address-owner address">
         <h3>地点</h3>
         <div id="exist-address">
             <c:forEach var="address" items="${addresses}" varStatus="row">
-                <li>
-                    <c:out value="${address.note}"/>
+                <li title="${address.peopleList}">
+                    <c:out value="${address.note}  "/>
                     已有<c:out value="${address.count_number}"/>票
                     <input type="checkbox" name="address-id" value="${address.address_id}" form="new-people">
                 </li>
@@ -45,7 +45,7 @@
         </form>
     </div>
 
-    <div class="time-address-owner" id="people">
+    <div class="time-address-owner people">
         <h3>参与者信息</h3>
         <form action="/event/add-people" id="new-people" method="post">
             <label for="name">姓名：</label>
@@ -53,9 +53,48 @@
             <button type="submit" name="url" value="${eventDetail.url}" form="new-people">添加</button>
         </form>
     </div>
-    <form action="/event/end">
-        <button type="submit" name="url" value="${eventDetail.url}">结束投票</button>
+    <form action="/event/end" id="end-form" method="post">
+        <input type="hidden" name="url" value="${eventDetail.url}">
     </form>
+    <button id="end-event" value="${eventDetail.password}">结束投票</button>
+</c:if>
+
+<c:if test="${not eventDetail.active}">
+
+    <div class="time-address-owner time">
+        <h3>时间</h3>
+        <div id="best-time">
+            <c:forEach var="timeInOrder" items="${timesInOrder}" varStatus="row">
+                <li title="${timeInOrder.peopleList}">
+                    <c:out value="${timeInOrder.note}  "/>
+                    <c:out value="${timeInOrder.count_number}"/>票
+                </li>
+            </c:forEach>
+        </div>
+    </div>
+
+    <div class="time-address-owner address">
+        <h3>地点</h3>
+        <div id="best-address">
+            <c:forEach var="addressInOrder" items="${addressesInOrder}" varStatus="row">
+                <li title="${addressInOrder.peopleList}">
+                    <c:out value="${addressInOrder.note}  "/>
+                    <c:out value="${addressInOrder.count_number}"/>票
+                </li>
+            </c:forEach>
+        </div>
+    </div>
+
+    <div class="time-address-owner people">
+        <h3>参与者</h3>
+        <div id="attendee">
+            <c:forEach var="person" items="${people}" varStatus="row">
+                <li>
+                    <c:out value="${person.name}"/>
+                </li>
+            </c:forEach>
+        </div>
+    </div>
 
 </c:if>
 

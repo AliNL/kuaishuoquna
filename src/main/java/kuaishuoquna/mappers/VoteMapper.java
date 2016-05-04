@@ -64,7 +64,6 @@ public interface VoteMapper {
                     "VALUES (#{name}, #{event_url})"
     )
     @Options(keyProperty = "people_id", useGeneratedKeys = true)
-    @Result(property = "people_id")
     long insertPeople(People people);
 
     @Insert(
@@ -90,7 +89,59 @@ public interface VoteMapper {
     @Update(
             "UPDATE event " +
                     "SET active = false " +
-                    "WHERE event_url = #{event_url}"
+                    "WHERE url = #{event_url}"
     )
     void EndEventByUrl(String event_url);
+
+    @Select(
+            "SELECT event_url, time_id, note, count_number FROM time " +
+                    "WHERE event_url = #{event_url} " +
+                    "ORDER BY count_number DESC"
+    )
+    @Results(value = {
+            @Result(property="event_url"),
+            @Result(property="time_id"),
+            @Result(property="note"),
+            @Result(property="count_number")
+    })
+    List<Time> getTimeInOrder(String url);
+
+    @Select(
+            "SELECT event_url, address_id, note, count_number FROM address " +
+                    "WHERE event_url = #{event_url} " +
+                    "ORDER BY count_number DESC"
+    )
+    @Results(value = {
+            @Result(property="event_url"),
+            @Result(property="address_id"),
+            @Result(property="note"),
+            @Result(property="count_number")
+    })
+    List<Address> getAddressInOrder(String url);
+
+    @Select(
+            "SELECT event_url, people.people_id, name FROM people,vote_detail " +
+                    "WHERE people.people_id = vote_detail.people_id " +
+                    "AND item_id = #{time_id} " +
+                    "AND type = 'time'"
+    )
+    @Results(value = {
+            @Result(property="event_url"),
+            @Result(property="people_id"),
+            @Result(property="name")
+    })
+    List<People> getPeopleByTimeId(long time_id);
+
+    @Select(
+            "SELECT event_url, people.people_id, name FROM people,vote_detail " +
+                    "WHERE people.people_id = vote_detail.people_id " +
+                    "AND item_id = #{address_id} " +
+                    "AND type = 'address'"
+    )
+    @Results(value = {
+            @Result(property="event_url"),
+            @Result(property="people_id"),
+            @Result(property="name")
+    })
+    List<People> getPeopleByAddressId(long Address_id);
 }

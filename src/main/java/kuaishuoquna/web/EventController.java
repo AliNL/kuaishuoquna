@@ -50,6 +50,14 @@ public class EventController {
         model.addAttribute("eventDetail", event);
         model.addAttribute("times", times);
         model.addAttribute("addresses", addresses);
+
+        List<Time> timesInOrder = voteService.findTimeInOrder(url);
+        List<Address> addressesInOrder = voteService.findAddressInOrder(url);
+        List<People> peopleList = voteService.findPeopleByEventUrl(url);
+
+        model.addAttribute("timesInOrder",timesInOrder);
+        model.addAttribute("addressesInOrder",addressesInOrder);
+        model.addAttribute("people",peopleList);
         return new ModelAndView("event");
     }
 
@@ -109,7 +117,7 @@ public class EventController {
 
         return new Event()
                 .setName(name)
-                .setPassword(password)
+                .setPassword(Integer.toString(password.hashCode()))
                 .setOwner(owner)
                 .setDescription(description)
                 .setUrl(Integer.toString(new Date().hashCode()).substring(0, 8))
