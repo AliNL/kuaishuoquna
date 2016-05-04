@@ -64,7 +64,7 @@ public interface VoteMapper {
                     "VALUES (#{name}, #{event_url})"
     )
     @Options(keyProperty = "people_id", useGeneratedKeys = true)
-    long insertPeople(People people);
+    void insertPeople(People people);
 
     @Insert(
             "INSERT INTO vote_detail (people_id, type, item_id) " +

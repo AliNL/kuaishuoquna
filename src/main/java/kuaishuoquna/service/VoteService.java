@@ -45,10 +45,9 @@ public class VoteService {
         return list;
     }
 
-    public long createPeople(People people) {
-        long people_id = voteMapper.insertPeople(people);
+    public void createPeople(People people) {
+        voteMapper.insertPeople(people);
         sqlSession.commit();
-        return people_id;
     }
 
     public List<People> findPeopleByEventUrl(String url) {

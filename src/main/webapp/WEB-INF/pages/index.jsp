@@ -5,13 +5,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 
 <div id="home-form">
-	<div class="home-bar red">
-		<a href="<c:url value='/event/create' />">创建</a>
-	</div>
-	<div class="home-bar blue">
-		<input id="event_name" type="text">
-		<button id="join">加入</button>
-	</div>
+    <a href="<c:url value='/event/create' />">创建</a>
 </div>
 
 <%@ include file="footer.jsp" %>

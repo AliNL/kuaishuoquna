@@ -78,7 +78,8 @@ public class EventController {
     @RequestMapping(value = "/add-people", method = RequestMethod.POST)
     public ModelAndView CreatePeople(HttpServletRequest request) throws IOException {
         People people = createPeople(request);
-        long people_id = voteService.createPeople(people);
+        voteService.createPeople(people);
+        long people_id = people.getPeople_id();
         List<VoteDetail> voteDetails = createVoteDetail(request,people_id);
         voteService.createVoteDetails(voteDetails);
         return new ModelAndView("redirect:/event/" + people.getEvent_url(), null);

@@ -13,3 +13,4 @@
     <a href="<c:url value='/event/create' />">创建</a>
     <a href="<c:url value='/' />">主页</a>
 </nav>
+<div id="content">

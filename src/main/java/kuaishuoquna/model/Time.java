@@ -7,7 +7,7 @@ public class Time {
     private String event_url;
     private String note;
     private int count_number;
-    private String peopleList = "";
+    private String peopleList = "参与者：";
 
     public String getPeopleList() {
         return peopleList;
@@ -15,7 +15,7 @@ public class Time {
 
     public Time setPeopleList(List<People> peopleList) {
         for (People people : peopleList) {
-            this.peopleList += people.getName() + ",";
+            this.peopleList += people.getName() + "  ";
         }
         return this;
     }
